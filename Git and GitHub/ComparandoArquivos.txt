@@ -1,0 +1,2 @@
+Windows fc arquio1 arquivo2
+Linux e Mac diifs -u arquivo1 arquivo2
