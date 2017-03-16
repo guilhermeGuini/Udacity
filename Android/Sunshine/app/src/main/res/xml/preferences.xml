@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/title_pref_category_weather">
+
+        <EditTextPreference
+            android:defaultValue="@string/pref_location_default"
+            android:key="@string/pref_location_key"
+            android:title="@string/pref_location_label" />
+
+        <ListPreference
+            android:key="@string/pref_list_unit_metric"
+            android:title="@string/unidade_metrica_title"
+            android:summary="@string/unidade_metrica_summary"
+            android:entries="@array/listentries_unidade_metrica"
+            android:entryValues="@array/listvalues_unidade_metrica"
+            android:defaultValue="1"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/dados_pessoais">
+
+        <EditTextPreference
+            android:key="edtNome"
+            android:title="@string/title_etd_nome_preference"
+            android:summary="Teste Sumário"
+            android:dialogTitle="Teste dialog" />
+
+        <CheckBoxPreference
+            android:key="parent_checkbox_preference"
+            android:title="@string/title_sexo"
+            android:summary="Teste" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

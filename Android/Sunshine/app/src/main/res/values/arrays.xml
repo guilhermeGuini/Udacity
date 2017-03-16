@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listentries_unidade_metrica">
+        <item>Celsius ºC</item>
+        <item>Fahrenheit ºF</item>
+    </string-array>
+    <string-array name="listvalues_unidade_metrica">
+        <item>metric</item>
+        <item>farenheit</item>
+    </string-array>
+</resources>
