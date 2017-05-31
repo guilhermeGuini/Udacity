@@ -13,14 +13,14 @@ for (var i = 0; i < nums.length; i++) {
     // We're creating a DOM element for the number
     var elem = document.createElement('div');
     elem.textContent = num;
-    elem.id = i.toString();
-
+    
     // ... and when we click, alert the value of `num`
-    elem.addEventListener('click', function(element) {
-        var index = parseInt(element.srcElement.id);
-        alert(nums[index]);
-    });
-
+    elem.addEventListener('click', (function(numCopy) {
+        return function() { 
+            alert(numCopy);
+        }
+    })(num));
+    
     // finally, let's add this element to the document
     document.body.appendChild(elem);
 };
