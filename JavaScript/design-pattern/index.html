@@ -1,31 +1,33 @@
 <!DOCTYPE>
 <html>
 <head>
-    <title>Cat Clicker</title>
+	<title>Cat Clicker</title>
+	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+	<ul id="cat-list"></ul>
+	<div id="cat">
+		<h2 id="cat-name"></h2>
+		<div id="cat-count"></div>
+		<img id="cat-img" src="" alt="cute cat" />
+	</div>
 
-<div>
-    <figure>
-        <img id="imgCat" src="img/cat.jpg" />
-        <figcaption>
-            Quantidade de clicks:
-            <span id="figCap">0</span>
-        </figcaption>
-    </figure>
-</div>
+	<button id="btnAdmin">Admin</button>
 
-<div>
-    <figure>
-        <img id="imgCat2" src="img/cat2.jpg" />
-        <figcaption>
-            Quantidade de clicks:
-            <span id="figCap2">0</span>
-        </figcaption>
-    </figure>
-</div>
+	<form id="form">
+		<label>Name</label>
+		<input type="text" id="txtName" /> <br/>
 
-    <!--<script type="text/javascript" src="scripts/site.js" ></script>-->
-    <script type="text/javascript" src="scripts/closures.js"></script>
+		<label>ImgUrl</label>
+		<input type="text" id="txtImgUrl" /> <br/>
+
+		<label>#clicks</label>
+		<input type="text" id="txtClicks" /> <br/>
+
+		<button id="btnCancel">Cancel</button>
+		<button id="btnSave">Save</button>
+	</form>
+
+	<script src="scripts/site.js"></script>
 </body>
 </html>
