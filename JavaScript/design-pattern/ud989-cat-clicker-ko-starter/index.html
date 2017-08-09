@@ -2,15 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cat Clicker Original</title> 
+    <title>Cat Clicker Original</title>
+    <link rel="stylesheet" type="text/css" href="css/site.css" />
 </head>
 <body>
+    <h1>Cat Clicker Original</h1>
     <div>
-        <h2 data-bind="text: name"></h2>
+        <h2>Cats</h2>
+        <ul data-bind="foreach: { data: catList, as: 'cat' }">
+            <li data-bind="text: cat.name, css: { active: cat.name() == $parent.currentCat().name() }, click: $parent.selectCat "></li>
+        </ul>
+    </div>
+
+    <div data-bind="with: currentCat">
+        <h2>Current Cat</h2>
+        <!--<h3 data-bind="text: name"></h3>-->
         <h3 data-bind="text: levelCat"></h3>
         <div data-bind="text: clickCount"></div>
-        <img src="" alt="cute cat" data-bind="click: incrementerCount, attr: {src: imgSrc}">
-
+        <img src="" alt="cute cat" data-bind="click: $parent.incrementerCount, attr: {src: imgSrc}">
+        <div>
+            <h3>Nicknames:</h3>
+            <ul data-bind="foreach: nicknames">
+                <li data-bind="text: $data"></li>
+            </ul>
+        </div>
     </div>
     <script src="js/lib/knockout-3.2.0.js"></script>
     <script src="js/app.js"></script>

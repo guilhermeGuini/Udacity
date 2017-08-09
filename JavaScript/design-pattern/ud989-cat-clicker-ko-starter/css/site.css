@@ -1,0 +1,11 @@
+li {
+    width: 200px;
+}
+
+li:hover {
+    cursor: pointer
+}
+
+.active {
+    background: lightblue;
+}
