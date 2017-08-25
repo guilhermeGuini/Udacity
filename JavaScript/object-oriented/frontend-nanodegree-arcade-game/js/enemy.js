@@ -17,22 +17,23 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    if(this.x === 0 || this.x > (QTDEBLOCOS + 1) * TAM_BLOCO)
+    if(this.x === 0 || this.x > (constants.QTDEBLOCOS + 1) * constants.TAM_BLOCO)
         this.initPosition();
     else
-        this.x += (JUMP_BUG * dt);
+        this.x += (constants.JUMP_BUG * dt);
 };
 
 Enemy.prototype.initPosition = function() {
     var thisEnemy = this;
+
     this.x = -2 * (Math.random() * 600);
     this.y = (Math.random() * 200) + 50;
 
     var qtdColisao = 0;
 
     allEnemies.forEach(function(enemy) {
-        if( (thisEnemy.y - TAM_BLOCO) <= enemy.y &&
-            (thisEnemy.y + TAM_BLOCO) >= enemy.y )
+        if( (thisEnemy.y - constants.TAM_BLOCO) <= enemy.y &&
+            (thisEnemy.y + constants.TAM_BLOCO) >= enemy.y )
            qtdColisao++;
     });
 

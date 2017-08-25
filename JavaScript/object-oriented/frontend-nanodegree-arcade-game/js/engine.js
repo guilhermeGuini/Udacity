@@ -23,6 +23,7 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
+        lastIdAnimation = '',
         lastTime;
 
     canvas.width = 505;
@@ -55,7 +56,10 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        win.requestAnimationFrame(main);
+        if(!player.win)
+           lastIdAnimation = win.requestAnimationFrame(main);
+        else
+            win.cancelAnimationFrame(lastIdAnimation);
     }
 
     /* This function does some initial setup that should only occur once,
@@ -79,7 +83,15 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
+    }
+
+    function checkCollisions() {
+        allEnemies.forEach(function(enemy) {
+            if(enemy.y === player.y) {
+
+            }
+        });
     }
 
     /* This is called by the update function and loops through all of the
@@ -158,7 +170,6 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -179,6 +190,6 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
-})(this);
 
+})(this);
 

@@ -1,36 +1,53 @@
-var TAM_BLOCO = 100;
-var JUMP = 50;
-var JUMP_BUG = 100;
-var QTDEBLOCOS = 5;
 
-var player;
-var allEnemies;
+(function(global){
 
-createEnemy = function(count) {
-    var arrEnemys = [];
+    var constants = {
+        TAM_BLOCO    : 100,
+        JUMP_PLAYER  : 50,
+        JUMP_BUG     : 100,
+        QTDEBLOCOS   : 5
+    };
 
-    for(var i = 0; i < count; i++)
-        arrEnemys.push(new Enemy());
+    var player, allEnemies;
 
-    return arrEnemys;
-};
+    var app = {
 
-init = function() {
-    player = new Player();
-    allEnemies = this.createEnemy(20);
+        createEnemy: function(count) {
+            var arrEnemys = [];
 
-    document.addEventListener('keyup', function(e) {
+            for(var i = 0; i < count; i++)
+             arrEnemys.push(new Enemy());
 
-        var allowedKeys = {
-            37: 'left',
-            38: 'up',
-            39: 'right',
-            40: 'down'
-        };
+            return arrEnemys;
+        },
 
-        player.handleInput(allowedKeys[e.keyCode]);
-    });
+        reset: function() {
+        },
 
-};
+        init: function() {
+            player = new Player();
+            allEnemies = this.createEnemy(20);
 
-init();
+            document.addEventListener('keyup', function(e) {
+
+                var allowedKeys = {
+                    37: 'left',
+                    38: 'up',
+                    39: 'right',
+                    40: 'down'
+                };
+
+                player.handleInput(allowedKeys[e.keyCode]);
+            });
+
+        }
+    };
+
+    app.init();
+    global.app = app;
+    global.constants = constants;
+    global.player    = player;
+    global.allEnemies = allEnemies;
+
+})(this);
+
