@@ -2,14 +2,15 @@
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-    this.x = 200;
+    this.x = 0;
     this.y = 400;
     this.win = false;
+    this.loose = false;
     this.sprite = 'images/char-boy.png';
 };
 
 Player.prototype.update = function() {
-     if(this.y === 0)
+    if(this.y === 0)
         this.win = true;
 };
 

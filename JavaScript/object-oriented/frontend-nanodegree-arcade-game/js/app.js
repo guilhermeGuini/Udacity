@@ -5,7 +5,9 @@
         TAM_BLOCO    : 100,
         JUMP_PLAYER  : 50,
         JUMP_BUG     : 100,
-        QTDEBLOCOS   : 5
+        QTDEBLOCOS   : 5,
+        HEIGTH_BUG   : 70,
+        WIDTH_BUG    : 78
     };
 
     var player, allEnemies;
@@ -24,9 +26,27 @@
         reset: function() {
         },
 
+        cancelAnimation: function() {
+        },
+
+        checkColision: function(enemy) {
+            return (this.colidiuColuna(enemy) &&
+                this.colidiuLinha(enemy));
+        },
+
+        colidiuLinha: function(enemy) {
+            return (player.x >= enemy.x &&
+                         player.x <= enemy.x + constants.WIDTH_BUG);
+        },
+
+        colidiuColuna: function(enemy) {
+            return (player.y >= enemy.y  &&
+                        player.y <= enemy.y + constants.HEIGTH_BUG);
+        },
+
         init: function() {
             player = new Player();
-            allEnemies = this.createEnemy(20);
+            allEnemies = this.createEnemy(15);
 
             document.addEventListener('keyup', function(e) {
 

@@ -56,10 +56,12 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        if(!player.win)
+        if(!player.win && !player.loose)
            lastIdAnimation = win.requestAnimationFrame(main);
-        else
+        else {
             win.cancelAnimationFrame(lastIdAnimation);
+            app.cancelAnimation();
+        }
     }
 
     /* This function does some initial setup that should only occur once,
@@ -88,9 +90,8 @@ var Engine = (function(global) {
 
     function checkCollisions() {
         allEnemies.forEach(function(enemy) {
-            if(enemy.y === player.y) {
-
-            }
+            if(app.checkColision(enemy))
+                player.loose = true;
         });
     }
 
@@ -183,6 +184,7 @@ var Engine = (function(global) {
         'images/enemy-bug.png',
         'images/char-boy.png'
     ]);
+
     Resources.onReady(init);
 
     /* Assign the canvas' context object to the global variable (the window
