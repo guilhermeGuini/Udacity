@@ -3,13 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
+    <link rel="icon" href="images/frog.ico" />
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" href="Semantic-UI-CSS-master/components/message.min.css">
 </head>
 <body>
+
+    <div class="container">
+        <div class="ui page grid ">
+           <div class="row">
+                <div class="column center aligned">
+                    <h1 class="h1-title">Bem-vindo</h1>
+                    <h1 class="sub-title">ao Arcade Frog Game</h1>
+                </div>
+           </div>
+        </div>
+        <div class="ui four column centered grid"  id="content">
+           <div clas="row">
+                <div class="column center aligned">
+
+                  <div class="ui styled accordion">
+                    <div class="ui negative message">
+                      <i class="left aligned warning sign icon"></i>
+                      <div class="header">
+                         Selecione um Personagem
+                      </div>
+                    </div>
+                    <div class="active title">
+                        <h2>Configurações</h1>
+                         <span>Essas configurações são opcionais</span>
+                    </div>
+                    <div class="active content">
+                       <div class="ui form">
+                        <h4 class="ui dividing header">Escolhar o player</h4>
+                        <div class="field">
+                        <label>Characters</label>
+                           <div class="ui five doubling cards">
+                          <div class="card">
+                            <div class="image">
+                              <img src="images/char-boy.png">
+                            </div>
+                            <div class="content">
+                              <a class="header">Ruan Cabalero</a>
+                           </div>
+                          </div>
+                          <div class="card">
+                            <div class="image">
+                              <img src="images/char-cat-girl.png">
+                            </div>
+                             <div class="content">
+                              <a class="header">M. do Rosario</a>
+                           </div>
+                          </div>
+                          <div class="card">
+                            <div class="image">
+                               <img src="images/char-horn-girl.png">
+                            </div>
+                             <div class="content">
+                              <a class="header">Lindalva</a>
+                           </div>
+                          </div>
+                           <div class="card">
+                            <div class="image">
+                               <img src="images/char-pink-girl.png">
+                            </div>
+                             <div class="content">
+                              <a class="header">Joana</a>
+                           </div>
+                          </div>
+                          <div class="card">
+                            <div class="image">
+                               <img src="images/char-princess-girl.png">
+                            </div>
+                             <div class="content">
+                              <a class="header">Pedrita</a>
+                           </div>
+                          </div>
+                        </div>
+                        <div class="field">
+                           <button class="ui button" id="btnComecar">Começar</button>
+                        </div>
+                        </div>
+                        </div>
+                     </div>
+                  </div>
+
+                </div>
+           </div>
+        </div>
+    </div>
+
+    <div class="ui column centered grid">
+      <div class="column">
+        <div class="container-canvas">
+        </div>
+      </div>
+    </div>
+
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+    <script src="Semantic-UI-CSS-master/semantic.min.js"></script>
     <script src="js/resources.js"></script>
     <script src="js/enemy.js"></script>
     <script src="js/player.js"></script>
-    <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
