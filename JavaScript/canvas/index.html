@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+    <canvas id="c" width="400" height="400"></canvas>
+    <script>
+        var c = document.querySelector("#c");
+        var ctx = c.getContext("2d");
+
+        var image = new Image();
+
+        image.onload = function() {
+            console.log("Loaded image");
+            ctx.drawImage(image, 0, 0, c.width, c.height);
+            /*var savedImage = c.toDataURL();
+            window.open(savedImage);*/
+
+            ctx.font = "36pt Impact";
+            ctx.textAlign = "center";
+
+            ctx.fillStyle = "#FFF";
+            ctx.fillText("CANVAS MEMES!", c.width / 2, 200);
+
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 3;
+            ctx.strokeText("CAVAS MEMES!", c.width / 2, 200);
+        };
+
+        image.src = "images/ariele.jpg";
+
+
+    </script>
+</body>
+</html>
