@@ -38,3 +38,11 @@ img {
 .background-game {
     background: #c6bdbd;
 }
+
+/**
+ * Styles for canvas fireworks
+**/
+canvas {
+	cursor: crosshair;
+	display: block;
+}

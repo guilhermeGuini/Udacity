@@ -1,46 +1,62 @@
-// Enemies our player must avoid
+/**
+ * Bugs
+ */
 var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+   
     this.x = 0;
     this.y = 0;
+    this.velocity = (Math.random() * 100) + 50;
     this.sprite = 'images/enemy-bug.png';
 };
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-   if(this.x === 0 || this.x > (constants.QTDEBLOCOS + 1) * constants.TAM_BLOCO)
-        this.initPosition();
-    else
-        this.x += (constants.JUMP_BUG * dt);
+
+    if(this.enemyWalkAll())
+       this.initPosition();
+
+    this.updatePosition(dt);
 };
 
-Enemy.prototype.initPosition = function() {
-    var thisEnemy = this;
-
-    this.x = -2 * (Math.random() * 600);
-    this.y = (Math.random() * 200) + 50;
-
-    var qtdColisao = 0;
-
-    allEnemies.forEach(function(enemy) {
-        if( (thisEnemy.y - constants.TAM_BLOCO) <= enemy.y &&
-            (thisEnemy.y + constants.TAM_BLOCO) >= enemy.y )
-           qtdColisao++;
-    });
-
-    if(qtdColisao > 1)
-         this.y = (Math.random() * 200) + 50;
+Enemy.prototype.updatePosition = function(dt) {
+    if(this.y === 0) this.definePositionY();
+    this.x += dt * (this.velocity + this.x / constants.SIZE_BLOCK);
 };
 
-// Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+Enemy.prototype.enemyWalkAll = function() {
+
+    return this.x > (constants.COUNT_BLOCKS + 1) * constants.SIZE_BLOCK;
+}
+
+Enemy.prototype.definePositionY = function() {
+    const SIZE_BLOCK = constants.SIZE_BLOCK;
+    const MINIMUM_BLOCK = SIZE_BLOCK;
+    const MAX_ATTEMPTS = 3;
+    let MIDDLE_BLOCK = SIZE_BLOCK * 2;
+
+    let attempts = 0;
+    let hasColision;
+
+    do {
+        hasColision = false;
+        this.y = (Math.random() * MIDDLE_BLOCK) + MINIMUM_BLOCK;
+
+        allEnemies.forEach(function(enemy) {
+            if( (this.y - SIZE_BLOCK) <= enemy.y &&
+                (this.y + SIZE_BLOCK) >= enemy.y )
+                hasColision = true;
+        });
+
+        attempts++;
+
+    } while(hasColision && attempts < MAX_ATTEMPTS);
+        
+}
+
+Enemy.prototype.initPosition = function() {
+    this.x = constants.SIZE_BLOCK * -3;
+    this.y = 0;
+}

@@ -1,17 +1,16 @@
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
-var Player = function() {
+
+let Player = function() {
     this.x = 0;
     this.y = 400;
     this.win = false;
     this.loose = false;
+    this.width = 65;
+    this.height = 85;
     this.sprite = 'images/char-boy.png';
 };
 
-Player.prototype.update = function() {
-    if(this.y === 0)
-        this.win = true;
+Player.prototype.wins = function() {
+    return this.y === 0;
 };
 
 Player.prototype.render = function() {
@@ -24,20 +23,36 @@ Player.prototype.handleInput = function(key) {
 
     switch(key) {
         case 'left':
-            if(this.x > 0)
-                this.x -= constants.JUMP_PLAYER;
+            this.moveToLeft();
          break;
         case 'up':
-            if(this.y > 0)
-                this.y  -= constants.JUMP_PLAYER/2;
+            this.moveToUp();
          break;
         case 'right':
-            if(this.x <  (constants.TAM_BLOCO  * constants.QTDEBLOCOS) - constants.TAM_BLOCO)
-                this.x += constants.JUMP_PLAYER;
+            this.moveToRight();
          break;
         case 'down':
-            if(this.y < 400)
-                this.y += constants.JUMP_PLAYER/2;
+            this.moveToDown();
          break;
     }
 };
+
+Player.prototype.moveToLeft = function() {
+    if(this.x > 0)
+        this.x -= constants.JUMP_PLAYER;
+}
+
+Player.prototype.moveToRight = function() {
+    if(this.x <  (constants.SIZE_BLOCK  * constants.COUNT_BLOCKS) - constants.SIZE_BLOCK)
+        this.x += constants.JUMP_PLAYER;
+}
+
+Player.prototype.moveToUp = function() {
+    if(this.y > 0)
+        this.y  -= constants.JUMP_PLAYER/2;
+}
+
+Player.prototype.moveToDown = function() {
+    if(this.y < 400)
+        this.y += constants.JUMP_PLAYER/2;
+}
