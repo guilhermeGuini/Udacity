@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First contact Promise</title>
+</head>
+<body>
+    <h1>Promises</h1>
+
+    <h2>States</h2>
+    <ul>
+        <li>Fulfilled</li>
+        <li>Rejected</li>
+        <li>Pending</li>
+        <li>Setled</li>
+    </ul>
+
+    <p id="#fulfilled">When task is executed with success.</p>
+    <p id="#rejected">When task is executed with error.</p>
+    <p id="#pending">When reject or resolve yet don't was defined.</p>
+    <p id="#setled">When reject or resolve already was defined.</p>
+
+    <script type="text/javascript">
+        new Promise(function(resolve) {
+            console.log('first');
+            resolve();
+            console.log('second');
+            }).then(function() {
+            console.log('third');
+            });
+    </script>    
+</body>
+</html>
