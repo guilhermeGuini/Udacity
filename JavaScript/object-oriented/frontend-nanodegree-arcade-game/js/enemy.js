@@ -24,20 +24,27 @@ Enemy.prototype.update = function(dt) {
 
 Enemy.prototype.initPosition = function() {
     var thisEnemy = this;
+    var x1;
+    var hasColision;
+    var attempts = 0;
 
-    this.x = -2 * (Math.random() * 600);
-    this.y = (Math.random() * 200) + 50;
+    do {
+        x1 = Math.random() * (0 - (-1600)) + (-1600);
 
-    var qtdColisao = 0;
+        hasColision = false;
+        allEnemies.forEach(function(enemy) {
+            if( (x1 - constants.TAM_BLOCO) <= enemy.x &&
+                (x1 + constants.TAM_BLOCO) >= enemy.x) {
+                hasColision = true;
+            }
+        });
 
-    allEnemies.forEach(function(enemy) {
-        if( (thisEnemy.y - constants.TAM_BLOCO) <= enemy.y &&
-            (thisEnemy.y + constants.TAM_BLOCO) >= enemy.y )
-           qtdColisao++;
-    });
+        attempts++;
 
-    if(qtdColisao > 1)
-         this.y = (Math.random() * 200) + 50;
+    } while (hasColision && attempts < 5);
+    
+    this.x = x1;
+    this.y = Math.random() * (50 - 250) + 250;
 };
 
 // Draw the enemy on the screen, required method for game

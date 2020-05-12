@@ -24,7 +24,8 @@
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastIdAnimation = '',
-        lastTime;
+        lastTime,
+        speed = 1000.0;
 
 
 
@@ -39,7 +40,7 @@
          * computer is) - hurray time!
          */
         var now = Date.now(),
-            dt = (now - lastTime) / 1000.0;
+            dt = (now - lastTime) / speed;
 
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
@@ -68,9 +69,9 @@
      * game loop.
      */
     function init() {
-          canvas.width = 505;
-    canvas.height = 606;
-    $('.container-canvas').append(canvas);
+        canvas.width = 505;
+        canvas.height = 606;
+        $('.container-canvas').append(canvas);
         reset();
         lastTime = Date.now();
         main();
@@ -175,6 +176,10 @@
     function reset() {
     }
 
+    function incrementSpeed() {
+        speed -= 25;
+    }
+
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
      * all of these images are properly loaded our game will start.
@@ -197,6 +202,7 @@
      */
     var engine = {};
     engine.init = init;
+    engine.incrementSpeed = incrementSpeed;
    // engine.Resources = Resources;
 
     global.ctx = ctx;

@@ -8,6 +8,7 @@ canvas {
 
 .container-canvas {
     text-align: center;
+    margin-top: 0px;
 }
 
 h1, .message {
@@ -36,5 +37,21 @@ img {
 }
 
 .background-game {
-    background: #c6bdbd;
+    background: #ffffff;
+}
+
+.center {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+.hearts-column {
+    margin: 0 auto;
+    margin-top: 20px;
+    display: none;
+}
+
+.hearts-column > img {
+    width: 20px;
 }

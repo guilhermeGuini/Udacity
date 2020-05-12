@@ -10,8 +10,18 @@ var Player = function() {
 };
 
 Player.prototype.update = function() {
-    if(this.y === 0)
+    if(this.y === 0) {
         this.win = true;
+        app.nextLevel();
+    }
+};
+
+Player.prototype.init = function() {
+    this.x = 0;
+    this.y = 400;
+    this.win = false;
+    this.loose = false;
+    this.sprite = 'images/char-boy.png';
 };
 
 Player.prototype.render = function() {
@@ -29,7 +39,7 @@ Player.prototype.handleInput = function(key) {
          break;
         case 'up':
             if(this.y > 0)
-                this.y  -= constants.JUMP_PLAYER/2;
+                this.y -= constants.JUMP_PLAYER/2;
          break;
         case 'right':
             if(this.x <  (constants.TAM_BLOCO  * constants.QTDEBLOCOS) - constants.TAM_BLOCO)

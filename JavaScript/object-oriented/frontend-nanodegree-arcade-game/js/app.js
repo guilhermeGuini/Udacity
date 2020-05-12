@@ -18,7 +18,7 @@
             var arrEnemys = [];
 
             for(var i = 0; i < count; i++)
-             arrEnemys.push(new Enemy());
+              arrEnemys.push(new Enemy());
 
             return arrEnemys;
         },
@@ -31,22 +31,30 @@
 
         checkColision: function(enemy) {
             return (this.colidiuColuna(enemy) &&
-                this.colidiuLinha(enemy));
+                    this.colidiuLinha(enemy));
         },
 
         colidiuLinha: function(enemy) {
             return (player.x >= enemy.x &&
-                         player.x <= enemy.x + constants.WIDTH_BUG);
+                    player.x <= enemy.x + constants.WIDTH_BUG);
         },
 
         colidiuColuna: function(enemy) {
             return (player.y >= enemy.y  &&
-                        player.y <= enemy.y + constants.HEIGTH_BUG);
+                    player.y <= enemy.y + constants.HEIGTH_BUG);
+        },
+
+        nextLevel: () => {
+            for(var i = 0; i < 2; i++)
+                global.allEnemies.push(new Enemy());
+
+            player.init();
+            Engine.incrementSpeed();
         },
 
         init: function() {
             player = new Player();
-            allEnemies = this.createEnemy(15);
+            allEnemies = this.createEnemy(5);
 
             document.addEventListener('keyup', function(e) {
 
@@ -60,6 +68,7 @@
                 player.handleInput(allowedKeys[e.keyCode]);
             });
         }
+
     };
 
     app.init();
@@ -119,6 +128,7 @@
             player.sprite = localStorage.charImgSrc;
             $('.message').hide();
             $('.container').hide();
+            $('.hearts-column').show();
             $('body').addClass('background-game');
             window.Resources.onReady(Engine.init());
         },
